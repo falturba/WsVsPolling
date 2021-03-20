@@ -1,0 +1,11 @@
+node_modules
+.DS_Store
+.idea
+.gradle
+build
+*.class
+*.jar
+*.war
+*.ear
+!gradle-wrapper.jar
+

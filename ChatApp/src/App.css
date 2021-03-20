@@ -1,0 +1,96 @@
+body {
+  background-color: black;
+}
+
+p {
+  text-align: center;
+  background-color: gray;
+  color: white;
+}
+
+span {
+  font-family: sans-serif;
+  color:greenyellow;
+}
+
+.chat-box-container {
+  display: flex;
+  flex-direction: row;
+  height: 70vh;
+}
+
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  border-color:royalblue;
+  border-style: solid;
+  overflow: scroll;
+  width: 50%;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 50%;
+  left: 50%;
+  top: 70%;
+}
+
+.message-input {
+  width: 90vw;
+  margin-bottom: 0.5rem;
+  height: 1.5rem;
+  text-align: left;
+}
+
+.name-input {
+  margin-top: 2rem;
+}
+
+button {
+  width: 200px;
+  height: 40px;
+  background-color: gray;
+  color: white;
+  border-color: green;
+  font-family: monospace;
+}
+
+#connect-btn {
+  margin-top: 0.5rem;
+}
+
+.connection-controls {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 50%;
+  bottom: 20%;
+}
+
+#connected-span {
+  color: greenyellow;
+  width: 10rem;
+  text-align: center;
+}
+
+#disconnected-span {
+  color: red;
+  width: 10rem;
+  text-align: center;
+}
+
+.message {
+  display: flex;
+  flex-direction: row;
+  border-color: darkseagreen;
+  border-style: solid;
+  margin-left: 0.5rem;
+}
+
+.message-time {
+  color: white;
+  margin-left: 1rem;
+}
