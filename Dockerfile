@@ -9,7 +9,7 @@ FROM openjdk:11-jdk-slim as build-service
 WORKDIR /app
 COPY ./ChatService ./
 
-RUN mkdir /app/src/main/resources/static
+RUN mkdir -p /app/src/main/resources/static
 
 COPY --from=build-app /app/build /app/src/main/resources/static
 
