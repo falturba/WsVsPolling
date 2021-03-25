@@ -14,7 +14,7 @@ class App extends React.Component {
     this.updateUserName = this.updateUserName.bind(this);
   }
 
-  componentDidMount() {
+  updateScroll() {
     var chatWindows = document.getElementsByClassName('chat-box');
     Array.prototype.forEach.call(chatWindows, function(chatWindow) {
       chatWindow.scrollTop = chatWindow.scrollHeight;
@@ -38,6 +38,7 @@ class App extends React.Component {
             <WebSocketClient
               updateConnectionStatus={this.updateConnectionStatus}
               updateUserName={this.updateUserName}
+              updateScroll={this.updateScroll}
             />
           </div>
           <div className='chat-box'>
@@ -46,6 +47,7 @@ class App extends React.Component {
               <HttpClient
                 isConnected={this.state.isConnected}
                 userName={this.state.userName}
+                updateScroll={this.updateScroll}
               />
             )}
           </div>

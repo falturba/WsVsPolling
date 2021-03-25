@@ -24,6 +24,7 @@ class HttpClient extends React.Component {
       let payloads = await response.json();
       if (payloads.length > 0) {
         this.setState({ messages: this.state.messages.concat(payloads.map(payload => parsePayload(payload))) });
+        this.props.updateScroll();
       }
 
       await this.poll();

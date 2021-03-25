@@ -69,6 +69,8 @@ class WebSocketClient extends React.Component {
       this.setState({
         messages: [...this.state.messages, { userNameColor, userName, text, date }]
       });
+
+      this.props.updateScroll();
     }
   }
 
