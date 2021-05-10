@@ -10,7 +10,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class SocketHandler extends TextWebSocketHandler {
 
@@ -18,7 +18,7 @@ public class SocketHandler extends TextWebSocketHandler {
     private static final int MESSAGE_SIZE_LIMIT = 100;
     private static final int USERNAME_SIZE_LIMIT = 35;
 
-    private HashMap<String, Session> sessions = new HashMap<>();
+    private ConcurrentHashMap<String, Session> sessions = new ConcurrentHashMap<>();
 
     @Override
     public void handleTextMessage(WebSocketSession webSocketSession, TextMessage textMessage) throws IOException {
@@ -31,7 +31,10 @@ public class SocketHandler extends TextWebSocketHandler {
                     .append(": ")
                     .append(textMessage.getPayload())
                     .toString();
-            receiverSession.getWebSocketSession().sendMessage(new TextMessage(message));
+            synchronized (receiverSession.getWebSocketSession()) {
+                receiverSession.getWebSocketSession().sendMessage(new TextMessage(message));
+            }
+
             HttpPollingHandler.messagesBuffer.get(receiverSession.getUserName()).add(message);
         }
     }

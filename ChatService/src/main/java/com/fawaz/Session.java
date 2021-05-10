@@ -21,6 +21,6 @@ public class Session  {
     }
 
     private String userName;
-    private WebSocketSession webSocketSession;
+    private volatile WebSocketSession webSocketSession;
     private String colorHex;
 }
